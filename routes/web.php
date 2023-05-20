@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VoterController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\VoterController;
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Rute untuk menampilkan daftar pemilih
 Route::get('/voters', [VoterController::class, 'index'])->name('voters.index');

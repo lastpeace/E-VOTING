@@ -1,5 +1,4 @@
 <!-- resources/views/layouts/app.blade.php -->
-<link rel="stylesheet" href="{{ asset('path/to/styles.css') }}">
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-VOTING PEMWEB 2</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('resource/css/styles.css') }}">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">E-VOTING PEMWEB 2</a>
+        <a class="navbar-brand" href="/">E-VOTING PEMWEB 2</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -1,5 +1,8 @@
 <!-- resources/views/voters/index.blade.php -->
+<head>
 
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
 @extends('layouts.app')
 
 @section('content')
