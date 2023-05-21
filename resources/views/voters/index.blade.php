@@ -1,7 +1,6 @@
 <!-- resources/views/voters/index.blade.php -->
 <head>
-
-<link rel="stylesheet" type="text/css" href="mystyle.css">
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 @extends('layouts.app')
 

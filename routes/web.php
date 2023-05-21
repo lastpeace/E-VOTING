@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 */
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('');
 
 // Rute untuk menampilkan daftar pemilih
 Route::get('/voters', [VoterController::class, 'index'])->name('voters.index');
@@ -37,3 +37,17 @@ Route::put('/voters/{voter}', [VoterController::class, 'update'])->name('voters.
 Route::delete('/voters/{voter}', [VoterController::class, 'destroy'])->name('voters.destroy');
 
 
+use App\Http\Controllers\AuthController;
+
+Route::get('/voter-login', [AuthController::class, 'showVoterLoginForm'])->name('voter.login.form');
+Route::post('/voter-login', [AuthController::class, 'voterLogin'])->name('voter.login');
+Route::get('/dashboard', [VoterController::class, 'dashboard'])->name('voter.dashboard');
+
+
+Route::get('/admin-login', [AuthController::class, 'showAdminLoginForm'])->name('admin.login.form');
+Route::post('/admin-login', [AuthController::class, 'adminLogin'])->name('admin.login');
+
+Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [AuthController::class, 'register'])->name('register.submit');
+
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');

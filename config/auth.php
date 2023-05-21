@@ -40,7 +40,19 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+    
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+    
+        'voters' => [
+            'driver' => 'session',
+            'provider' => 'voters',
+        ],
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -59,11 +71,17 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
+   'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
+
+    'voters' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Voter::class,
+    ],
+
 
         // 'users' => [
         //     'driver' => 'database',

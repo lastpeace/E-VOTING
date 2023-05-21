@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Voter;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class VoterController extends Controller
 {
     /**
@@ -89,4 +89,15 @@ class VoterController extends Controller
 
         return redirect()->route('voters.index')->with('success', 'Voter deleted successfully.');
     }
+
+    public function dashboard()
+{
+    // Ambil data pengguna yang sedang login
+    $user = auth()->user();
+
+    // Tampilkan halaman dasbor pengguna Voter
+    return view('voter.dashboard', compact('user'));
+}
+    
+
 }

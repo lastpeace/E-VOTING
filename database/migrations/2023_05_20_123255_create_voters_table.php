@@ -17,6 +17,8 @@ class CreateVotersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('nim')->unique();
+            $table->string('email');
+            $table->string('password');
             $table->boolean('has_voted')->default(false);
             $table->timestamps();
         });
