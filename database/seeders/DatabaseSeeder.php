@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Role;
+use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -29,6 +31,32 @@ class DatabaseSeeder extends Seeder
         'password' => bcrypt('user12345'),
         ]);
 
+        $role = Role::insert([
+            'name'=>'admin',
+        ]);
+        
+        $role = Role::insert([
+            'name'=>'Voter',
+        ]);
+        $role = Role::insert([
+            'name'=>'Ketua Kelas',
+        ]);
+
+        DB::table('user_role')->insert([
+            'user_id'=> 1,
+            'role_id'=> 1,
+        ]);
+        DB::table('user_role')->insert([
+            'user_id'=> 2,
+            'role_id'=> 2,
+        ]);
+        DB::table('user_role')->insert([
+            'user_id'=> 3,
+            'role_id'=> 3,
+        ]);
+
     }
+
+    
 }
 ?>
