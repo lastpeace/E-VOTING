@@ -36,12 +36,9 @@ class DatabaseSeeder extends Seeder
         ]);
         
         $role = Role::insert([
-            'name'=>'Voter',
+            'name'=>'voter',
         ]);
-        $role = Role::insert([
-            'name'=>'Ketua Kelas',
-        ]);
-
+        
         DB::table('user_role')->insert([
             'user_id'=> 1,
             'role_id'=> 1,
@@ -52,7 +49,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('user_role')->insert([
             'user_id'=> 3,
-            'role_id'=> 3,
+            'role_id'=> 2,
         ]);
 
     }

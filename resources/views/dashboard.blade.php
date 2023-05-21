@@ -1,4 +1,10 @@
-
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Relasi One to One & Many To Many</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+</head>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -13,8 +19,26 @@
                     <p>Welcome, {{ Auth::user()->name }}!</p>
                 </div>
             </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nama User</th>
+                        <th>Roles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ Auth::user()->name }}</td>
+                        <td>
+                            @foreach (Auth::user()->roles()->get() as $role)
+                                <button class="btn btn-sm btn-primary me-2">{{ $role->name }}</button>
+                            @endforeach
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    
+
 </x-app-layout>
