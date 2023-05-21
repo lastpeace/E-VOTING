@@ -18,7 +18,7 @@
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('voter.login') }}">Login</a>
@@ -29,7 +29,7 @@
 </form>
 
                     </ul>
-                </div>
+                </div> -->
             </div>
         </nav>
     </header>
