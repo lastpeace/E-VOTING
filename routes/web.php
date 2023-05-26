@@ -28,13 +28,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::get('/candidates/create', [CandidateController::class, 'create'])->name('candidates.create');
-Route::post('/candidates', [CandidateController::class, 'store'])->name('candidates.store');
-Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates.index');
-Route::get('/candidates/{candidate}/edit', [CandidateController::class, 'edit'])->name('candidates.edit');
-Route::put('/candidates/{candidate}', [CandidateController::class, 'update'])->name('candidates.update');
-Route::delete('/candidates/{candidate}', [CandidateController::class, 'destroy'])->name('candidates.destroy');
+Route::get('/candidates', function () {
+    return view('candidates.index');
+})->middleware(['auth', 'verified'])->name('candidates.index');
+// Route::get('/candidates/create', [CandidateController::class, 'create'])->name('candidates.create');
+// Route::post('/candidates', [CandidateController::class, 'store'])->name('candidates.store');
+// Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates.index');
+// Route::get('/candidates/{candidate}/edit', [CandidateController::class, 'edit'])->name('candidates.edit');
+// Route::put('/candidates/{candidate}', [CandidateController::class, 'update'])->name('candidates.update');
+// Route::delete('/candidates/{candidate}', [CandidateController::class, 'destroy'])->name('candidates.destroy');
 
 Route::get('/home', function () {
     return view('home');
