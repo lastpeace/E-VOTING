@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VoterController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,39 +15,29 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [HomeController::class, 'index'])->name('');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Rute untuk menampilkan daftar pemilih
-Route::get('/voters', [VoterController::class, 'index'])->name('voters.index');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-// Rute untuk menampilkan formulir tambah pemilih
-Route::get('/voters/create', [VoterController::class, 'create'])->name('voters.create');
+Route::get('/candidates/create', [CandidateController::class, 'create'])->name('candidates.create');
+Route::post('/candidates', [CandidateController::class, 'store'])->name('candidates.store');
+Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates.index');
+Route::get('/candidates/{candidate}/edit', [CandidateController::class, 'edit'])->name('candidates.edit');
+Route::put('/candidates/{candidate}', [CandidateController::class, 'update'])->name('candidates.update');
+Route::delete('/candidates/{candidate}', [CandidateController::class, 'destroy'])->name('candidates.destroy');
 
-// Rute untuk menyimpan data pemilih baru
-Route::post('/voters', [VoterController::class, 'store'])->name('voters.store');
+Route::get('/home', function () {
+    return view('home');
+});
 
-// Rute untuk menampilkan formulir edit pemilih
-Route::get('/voters/{voter}/edit', [VoterController::class, 'edit'])->name('voters.edit');
-
-// Rute untuk mengupdate data pemilih
-Route::put('/voters/{voter}', [VoterController::class, 'update'])->name('voters.update');
-
-// Rute untuk menghapus data pemilih
-Route::delete('/voters/{voter}', [VoterController::class, 'destroy'])->name('voters.destroy');
-
-
-use App\Http\Controllers\AuthController;
-
-Route::get('/voter-login', [AuthController::class, 'showVoterLoginForm'])->name('voter.login.form');
-Route::post('/voter-login', [AuthController::class, 'voterLogin'])->name('voter.login');
-Route::get('/dashboard', [VoterController::class, 'dashboard'])->name('voter.dashboard');
-
-
-Route::get('/admin-login', [AuthController::class, 'showAdminLoginForm'])->name('admin.login.form');
-Route::post('/admin-login', [AuthController::class, 'adminLogin'])->name('admin.login');
-
-Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('register', [AuthController::class, 'register'])->name('register.submit');
-
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+require __DIR__ . '/auth.php';
