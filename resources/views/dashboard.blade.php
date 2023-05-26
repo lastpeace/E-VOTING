@@ -36,10 +36,7 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
-                <td>Tambah Data</td>
-                {{-- <td><button class="btn btn-sm btn-primary me-2"href="{{ route('candidates.create') }}">TAMBAH</button> --}}
-                </td>
+                </table>    
 
             </div>
         </div>

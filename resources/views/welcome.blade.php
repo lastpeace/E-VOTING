@@ -12,8 +12,8 @@
         <p>
             <button class="button-54"><a class="btn btn-primary btn-lg" style="color: black; " href="{{ route('login') }}"
                     role="button">Login</a></button>
-            <button class="button-54"><a class="btn btn-success btn-lg" style="color: black; "
-                    href="{{ route('register') }}" role="button">Daftar</a></button>
+            {{-- <button class="button-54"><a class="btn btn-success btn-lg" style="color: black; "
+                        href="{{ route('register') }}" role="button">Daftar</a></button> --}}
         </p>
         </form>
     </div>
