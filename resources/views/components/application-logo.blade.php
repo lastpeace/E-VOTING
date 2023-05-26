@@ -1,1 +1,1 @@
-<img src="{{ asset('/Source')}}/evot.png " width="100" height="100">
+<img src="{{ asset('/Source')}}/evot.png " width="100">
