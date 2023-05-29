@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\DB;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -16,44 +17,23 @@ class DatabaseSeeder extends Seeder
     {
 
         $user = User::insert([
-        'name' => 'Raihan Caesario Ammar Saputra',
-        'email' => 'Raihan.saputra@mhs.unsoed.ac.id',
-        'password' => bcrypt('ammar'),
+            'name' => 'Raihan Caesario Ammar Saputra',
+            'email' => 'Raihan.saputra@mhs.unsoed.ac.id',
+            'password' => bcrypt('ammar'),
         ]);
         $user = User::insert([
-        'name' => 'Aufa Syaihan',
-        'email' => 'user2@unsoed.ac.id',
-        'password' => bcrypt('user12345'),
+            'name' => 'Aufa Syaihan',
+            'email' => 'user2@unsoed.ac.id',
+            'password' => bcrypt('user12345'),
         ]);
         $user = User::insert([
-        'name' => 'M.Naufal Azizi',
-        'email' => 'user3@unsoed.ac.id',
-        'password' => bcrypt('user12345'),
-        ]);
-
-        $role = Role::insert([
-            'name'=>'admin',
-        ]);
-        
-        $role = Role::insert([
-            'name'=>'voter',
-        ]);
-        
-        DB::table('user_role')->insert([
-            'user_id'=> 1,
-            'role_id'=> 1,
-        ]);
-        DB::table('user_role')->insert([
-            'user_id'=> 2,
-            'role_id'=> 2,
-        ]);
-        DB::table('user_role')->insert([
-            'user_id'=> 3,
-            'role_id'=> 2,
+            'name' => 'M.Naufal Azizi',
+            'email' => 'user3@unsoed.ac.id',
+            'password' => bcrypt('user12345'),
         ]);
 
     }
 
-    
+
 }
 ?>
