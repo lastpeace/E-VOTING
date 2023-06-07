@@ -20,24 +20,6 @@
                         <p>Welcome, {{ Auth::user()->name }}!</p>
                     </div>
                 </div>
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nama User</th>
-                            <th>Roles</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ Auth::user()->name }}</td>
-                            <td>
-                                @foreach (Auth::user()->roles()->get() as $role)
-                                    <button class="btn btn-sm btn-primary me-2">{{ $role->name }}</button>
-                                @endforeach
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
 
             </div>
         </div>
