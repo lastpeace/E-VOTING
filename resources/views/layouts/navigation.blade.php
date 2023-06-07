@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('/Source') }}/logo.png " width="40">
+                        <img src="{{ asset('/Source') }}/evot.png " width="40">
                     </a>
                 </div>
                 <div class="shrink-0 flex items-center ml-4  font-extrabold text-xl ">
@@ -23,8 +23,7 @@
                     <x-dropdown-table>
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-1 pt-1">
-                                <div>{{ __('Tables') }}</div>
-
+                                <div class="">{{ __('Tables') }}</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 20 20">

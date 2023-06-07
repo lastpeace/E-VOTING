@@ -21,7 +21,7 @@
                         </div>
                         <div class="basis-1/2 text-end">
                             @php
-                            $date = Carbon\Carbon::now()->toDateString();
+                            $date = Carbon\Carbon::now('Asia/jakarta')->toDateString();
                             $newDate = Carbon\Carbon::createFromFormat('Y-m-d', $date)
                             ->format('m/d/Y');
                             echo $newDate;
