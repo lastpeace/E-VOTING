@@ -7,8 +7,8 @@
     </head>
     <x-app-layout>
         <div class="pt-2 h-full">
-            <div class="mx-auto mb-10 h-full">
-                <div class="rounded-t-[50px] bg-white shadow-sm sm:h-screen">
+            <div class="mx-auto h-full">
+                <div class="rounded-t-[50px] bg-white shadow-sm sm:h-full md:h-full lg:h-full xl:h-full">
                     <div class="ml-4 p-6 text-slate-400 text-sm">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
