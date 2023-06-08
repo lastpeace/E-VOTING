@@ -8,8 +8,8 @@
 @section('content')
 <div class="grid h-screen place-items-center">
     <div class="w-3/4 my-1/2 bg-white h-1/2 text-center rounded-lg shadow-2xl flex items-center justify-center" name="header">
-        <div class="w-full px-8">
-            <h1 class="font-medium text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl">Website <span
+        <div class="w-full px-8 container">
+            <h1 class="font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl">Website <span
                     class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 uppercase">E-Voting</span>
                 Untuk Tugas Pemrograman Web
                 II</h1>
