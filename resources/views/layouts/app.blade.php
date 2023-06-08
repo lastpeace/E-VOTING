@@ -20,7 +20,7 @@
 </head>
 
 <body class="font-poppins antialiased bg-gradient-to-br from-sky-500 to-purple-500">
-    <div class="min-h-screen">
+    <div class="">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
