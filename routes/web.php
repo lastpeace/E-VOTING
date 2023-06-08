@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kelasController;
+use App\Http\Controllers\kandidatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,17 +34,14 @@ Route::middleware('auth')->group(function () {
 Route::get('/candidates', function () {
     return view('candidates.index');
 })->middleware(['auth', 'verified'])->name('candidates.index');
-// Route::get('/candidates/create', [CandidateController::class, 'create'])->name('candidates.create');
-// Route::post('/candidates', [CandidateController::class, 'store'])->name('candidates.store');
-// Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates.index');
-// Route::get('/candidates/{candidate}/edit', [CandidateController::class, 'edit'])->name('candidates.edit');
-// Route::put('/candidates/{candidate}', [CandidateController::class, 'update'])->name('candidates.update');
-// Route::delete('/candidates/{candidate}', [CandidateController::class, 'destroy'])->name('candidates.destroy');
+
 
 Route::get('/home', function () {
-    return view('home');
+    return redirect('admin');
 });
 
+
 Route::resource('/kelas', kelasController::class);
+Route::resource('/kandidat',kandidatController::class);
 
 require __DIR__ . '/auth.php';
