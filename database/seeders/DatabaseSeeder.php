@@ -20,16 +20,19 @@ class DatabaseSeeder extends Seeder
             'name' => 'Raihan Caesario Ammar Saputra',
             'email' => 'Raihan.saputra@mhs.unsoed.ac.id',
             'password' => bcrypt('ammar'),
+            'hasRoles' => 'admin'
         ]);
         $user = User::insert([
             'name' => 'Aufa Syaihan',
             'email' => 'user2@unsoed.ac.id',
             'password' => bcrypt('user12345'),
+            'hasRoles' => 'voter'
         ]);
         $user = User::insert([
             'name' => 'M.Naufal Azizi',
             'email' => 'user3@unsoed.ac.id',
             'password' => bcrypt('user12345'),
+            'hasRoles' => 'voter'
         ]);
 
     }
