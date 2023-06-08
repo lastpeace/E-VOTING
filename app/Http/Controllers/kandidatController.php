@@ -82,13 +82,11 @@ class kandidatController extends Controller
         $request->validate([
             'nama_kandidat'=>'required',
             'foto'=>'mimes:jpg,png,jpeg|image|max:10000',
-            'foto'=>'required',
             'visi'=>'required',
             'misi'=>'required'
         ],
         [
             'nama_kandidat.required' => 'Nama Wajib diisi',
-            'foto.required' => 'foto wajib diisi',
             'foto.mimes'=>'Foto hanya boleh berekstensi jpg, png, jpeg dan berukuran <10mb',
             'visi.required' => 'visi Wajib diisi',
             'misi.required' => 'misi Wajib diisi'

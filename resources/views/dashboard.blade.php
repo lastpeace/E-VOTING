@@ -36,7 +36,7 @@
                         <div class="mx-auto rounded-lg shadow-lg my-5">
                             <p class="uppercase text-center text-2xl font-semibold py-5">{{$item->nama_kandidat}}</p>
                             @if($item->foto)
-                                <img class="mx-auto w-[300px] h-[400px]" src="{{ url('foto').'/'.$item->foto }}"
+                                <img class="mx-auto w-[300px]" src="{{ url('foto').'/'.$item->foto }}"
                                     alt="">
                                 @endif
                             <p class="text-center mx-auto font-bold py-5 text-lg">Jumlah Vote : 1</p>
