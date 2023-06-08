@@ -3,6 +3,7 @@
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\kelasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,7 @@ Route::get('/candidates', function () {
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::resource('/kelas', kelasController::class);
 
 require __DIR__ . '/auth.php';

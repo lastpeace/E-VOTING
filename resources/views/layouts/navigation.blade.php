@@ -42,7 +42,7 @@
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Table Calon') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <x-dropdown-link :href="route('kelas.index')">
                                 {{ __('Table Kelas') }}
                             </x-dropdown-link>
                         </x-slot>
