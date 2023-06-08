@@ -8,23 +8,33 @@
 </head>
 <body>
     <a href="{{ url('dashboard') }}">Kembali</a>
-   <a href='{{ url('kelas/create') }}'>Tambah Kelas</a>
+   <a href='{{ url('kandidat/create') }}'>Tambah Kandidat</a>
 
    
         <table border="1">
             <tr>
                 <th>No</th>
-                <th>Nama Kelas</th>
+                <th>Nama Kandidat</th>
+                <th>Visi</th>
+                <th>Misi</th>
+                <th>Foto</th>
                 <th>Aksi</th>
             </tr>
             <?php $i = $data->firstItem() ?>
             @foreach ($data as $item)
             <tr>
                 <td>{{$i}}</td>
-                <td>{{$item->nama_kelas}}</td>
+                <td>{{$item->nama_kandidat}}</td>
+                <td>{{$item->visi}}</td>
+                <td>{{$item->misi}}</td>
                 <td>
-                    <a href="{{ url('kelas/'.$item->id.'/edit') }}">Edit</a>
-                    <form onsubmit="return confirm('Yakin akan menghapus data?')" action="{{ url('kelas/'.$item->id) }}" method="POST">
+                    @if($item->foto)
+                        <img style="max-width:50px;max-height:50px;"src="{{ url('foto').'/'.$item->foto }}" alt="">
+                     @endif
+                </td>
+                <td>
+                    <a href="{{ url('kandidat/'.$item->id_calon.'/edit') }}">Edit</a>
+                    <form onsubmit="return confirm('Yakin akan menghapus data?')" action="{{ url('kandidat/'.$item->id_calon) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" name="submit">Delete</button>

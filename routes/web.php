@@ -4,6 +4,7 @@ use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kelasController;
+use App\Http\Controllers\kandidatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,5 +45,6 @@ Route::get('/home', function () {
 });
 
 Route::resource('/kelas', kelasController::class);
+Route::resource('/kandidat',kandidatController::class);
 
 require __DIR__ . '/auth.php';
