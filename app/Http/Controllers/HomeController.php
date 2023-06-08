@@ -16,10 +16,8 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if ($user->hasRole::class ('admin')) {
-            return redirect()->route('admin.page');
-        } else {
-            return redirect()->route('user.page');
+        if ($user = '1') {
+            return redirect('indexadmin');
         }
     }
     public function indexUser()
