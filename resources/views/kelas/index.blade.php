@@ -5,7 +5,6 @@
     <script src="https://kit.fontawesome.com/19f53fb20b.js" crossorigin="anonymous"></script>
     <title>E-Voting | Kelas</title>
 </head>
-<<<<<<< HEAD
 <x-app-layout>
     <div class="pt-2 h-full">
         <div class="mx-auto h-full bg-white rounded-t-[50px]">
@@ -54,36 +53,3 @@
         </div>
     </div>
 </x-app-layout>
-=======
-<body>
-    <a href="{{ url('dashboard') }}">Kembali</a>
-   <a href='{{ url('kelas/create') }}'>Tambah Kelas</a>
-
-   
-        <table border="1">
-            <tr>
-                <th>No</th>
-                <th>Nama Kelas</th>
-                <th>Aksi</th>
-            </tr>
-            <?php $i = $data->firstItem() ?>
-            @foreach ($data as $item)
-            <tr>
-                <td>{{$i}}</td>
-                <td>{{$item->nama_kelas}}</td>
-                <td>
-                    <a href="{{ url('kelas/'.$item->id.'/edit') }}">Edit</a>
-                    <form onsubmit="return confirm('Yakin akan menghapus data?')" action="{{ url('kelas/'.$item->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" name="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <?php $i++?>
-            @endforeach
-        </table>
-   
-</body>
-</html>
->>>>>>> 8db91c1a31ac636272594cda0b21e8aa84f05aa2
