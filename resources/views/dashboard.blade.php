@@ -6,9 +6,9 @@
         <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"> -->
     </head>
     <x-app-layout>
-        <div class="pt-2 h-full">
-            <div class="mx-auto h-full">
-                <div class="rounded-t-[50px] bg-white shadow-sm sm:h-full md:h-full lg:h-full xl:h-full">
+        <div class="pt-2 h-auto">
+            <div class="mx-auto h-auto">
+                <div class="rounded-t-[50px] bg-white shadow-sm sm:h-auto md:h-auto lg:h-auto xl:h-auto">
                     <div class="ml-4 p-6 text-slate-400 text-sm">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
@@ -22,7 +22,7 @@
                         <div class="basis-1/2 text-end">
                             @php
                                 $date = Carbon\Carbon::now('Asia/jakarta')->toDateString();
-                                $newDate = Carbon\Carbon::createFromFormat('Y-m-d', $date)->format('m/d/Y');
+                                $newDate = Carbon\Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
                                 echo $newDate;
                             @endphp
                         </div>
@@ -31,24 +31,18 @@
                         10/100
                     </div>
                     <div class="container mx-auto px-6 py-5 sm:flex sm:gap-7 w-full">
+                        <?php $i = $data->firstItem() ?>
+                            @foreach ($data as $item)
                         <div class="mx-auto rounded-lg shadow-lg my-5">
-                            <p class="uppercase text-center text-2xl font-semibold py-5">Calon 1</p>
-                            <img class="mx-auto w-3/4" src="https://source.unsplash.com/7YVZYZeITc8/300x400"
-                                alt="" />
+                            <p class="uppercase text-center text-2xl font-semibold py-5">{{$item->nama_kandidat}}</p>
+                            @if($item->foto)
+                                <img class="mx-auto w-[300px]" src="{{ url('foto').'/'.$item->foto }}"
+                                    alt="">
+                                @endif
                             <p class="text-center mx-auto font-bold py-5 text-lg">Jumlah Vote : 1</p>
                         </div>
-                        <div class="mx-auto rounded-lg shadow-lg my-5">
-                            <p class="uppercase text-center text-2xl font-semibold py-5">Calon 1</p>
-                            <img class="mx-auto w-3/4" src="https://source.unsplash.com/7YVZYZeITc8/300x400"
-                                alt="" />
-                            <p class="text-center mx-auto font-bold py-5 text-lg">Jumlah Vote : 1</p>
-                        </div>
-                        <div class="mx-auto rounded-lg shadow-lg my-5">
-                            <p class="uppercase text-center text-2xl font-semibold py-5">Calon 1</p>
-                            <img class="mx-auto w-3/4" src="https://source.unsplash.com/7YVZYZeITc8/300x400"
-                                alt="" />
-                            <p class="text-center mx-auto font-bold py-5 text-lg">Jumlah Vote : 1</p>
-                        </div>
+                        <?php $i++?>
+                        @endforeach
                     </div>
                 </div>
             </div>

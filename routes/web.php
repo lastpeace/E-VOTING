@@ -9,10 +9,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\kandidatController;
-use App\Models\Voter;
-use PhpParser\Node\Name;
-
-
+use App\Models\Kandidat;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +27,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $data = Kandidat::paginate();
+    return view('dashboard')->with('data', $data);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

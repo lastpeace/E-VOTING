@@ -40,7 +40,7 @@
                                 {{ __('Table User') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('kandidat.index')">
-                                {{ __('Table Calon') }}
+                                {{ __('Table Candidate') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('kelas.index')">
                                 {{ __('Table Kelas') }}
@@ -115,10 +115,10 @@
             <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('dashboard')">
                 {{ __('Table User') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('dashboard')">
-                {{ __('Table Calon') }}
+            <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('kandidat.index')">
+                {{ __('Table Candidate') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('dashboard')">
+            <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('kelas.index')">
                 {{ __('Table Kelas') }}
             </x-responsive-nav-link>
         </div>

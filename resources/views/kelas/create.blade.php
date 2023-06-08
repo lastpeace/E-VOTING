@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/19f53fb20b.js" crossorigin="anonymous"></script>
-    <title>E-Voting | Kelas | Edit</title>
+    <title>E-Voting | Kelas</title>
 </head>
 <x-app-layout>
     <div class="pt-2 h-full">
