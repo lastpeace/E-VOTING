@@ -11,7 +11,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gradient-to-r from-cyan-500 to-blue-500">
+<body class="font-poppins bg-gradient-to-r from-cyan-500 to-blue-500">
     <div class="min-h-screen">
         @yield('content')
     </div>
