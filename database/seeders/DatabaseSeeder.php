@@ -15,30 +15,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = User::create([
-            'name' => 'Admin',
-            'email' => 'admin@admin',
-            'password' => bcrypt('admin123'),
-        ]);
-        $admin->assignRole('admin');
-        $user = User::create([
-            'name' => 'User',
-            'email' => 'user@user',
-            'password' => bcrypt('user123'),
-        ]);
-        $user->assignRole('user');
 
-        //buat admin role
-        $adminRole = Role::create([
-            'name' => 'admin',
-            'guard_name' => 'web'
+        $user = User::insert([
+            'name' => 'Raihan Caesario Ammar Saputra',
+            'email' => 'Raihan.saputra@mhs.unsoed.ac.id',
+            'password' => bcrypt('ammar'),
+            'hasRoles' => 'admin'
         ]);
-        //buat user Role
-        $userRole = Role::create([
-            'name' => 'user',
-            'guard_name' => 'web'
+        $user = User::insert([
+            'name' => 'Aufa Syaihan',
+            'email' => 'user2@unsoed.ac.id',
+            'password' => bcrypt('user12345'),
+            'hasRoles' => 'voter'
         ]);
+        $user = User::insert([
+            'name' => 'M.Naufal Azizi',
+            'email' => 'user3@unsoed.ac.id',
+            'password' => bcrypt('user12345'),
+            'hasRoles' => 'voter'
+        ]);
+
     }
+
 
 }
 ?>

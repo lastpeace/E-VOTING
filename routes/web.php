@@ -39,12 +39,7 @@ Route::get('/home', function () {
     return redirect('admin');
 });
 
-<<<<<<< HEAD
-Route::get('admin-page',[App\Http\Controllers\HomeController::class, 'indexAdmin'])->middleware('role:admin')->name('admin.page');
-Route::get('user-page', [App\Http\Controllers\HomeController::class, 'indexUser'])->middleware('role:user')->name('user.page');
 
-=======
 Route::resource('/kelas', kelasController::class);
->>>>>>> f9148a0e56d3279464521ccfaffe40de7815530c
 
 require __DIR__ . '/auth.php';
