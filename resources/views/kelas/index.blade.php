@@ -6,7 +6,7 @@
     <title>E-Voting | Kelas</title>
 </head>
 <x-app-layout>
-    <div class="pt-2 h-full">
+    <div class="pt-2">
         <div class="mx-auto h-full bg-white rounded-t-[50px]">
             <div class="ml-4 pl-6 pt-6 text-slate-400 text-sm">
                 <a href="{{ route('dashboard') }}">Dashboard</a> >

@@ -103,8 +103,8 @@
     <title>E-Voting | Kandidat</title>
 </head>
 <x-app-layout>
-    <div class="pt-2 h-full">
-        <div class="mx-auto h-full sm:h-auto md:h-full lg:h-auto xl:h-auto bg-white rounded-t-[50px]">
+    <div class="pt-2">
+        <div class="mx-auto h-full bg-white rounded-t-[50px]">
             <div class="ml-4 pl-6 pt-6 text-slate-400 text-sm">
                 <a href="{{ route('dashboard') }}">Dashboard</a> >
                 <a href="{{ route('kandidat.index') }}">Candidate</a>
@@ -115,7 +115,7 @@
                         href="{{ url('kandidat/create') }}">Tambah Kandidat</a>
                 </div>
                 <!--Container-->
-                <div class="container w-full md:w-5/6 xl:w-3/4  mx-auto px-2">
+                <div class="w-full md:w-5/6 xl:w-3/4 mx-auto mb-5">
 
 
                     <!--Card-->
