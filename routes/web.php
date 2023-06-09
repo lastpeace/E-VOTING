@@ -1,4 +1,7 @@
 <?php
+namespace App\Http\Middleware;
+
+use App\Http\Middleware\CekRole;
 
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\HomeController;
@@ -25,7 +28,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $data = Kandidat::paginate();
-    return view('dashboard')->with('data',$data);
+    return view('dashboard')->with('data', $data);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -33,17 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/candidates', function () {
-    return view('candidates.index');
-})->middleware(['auth', 'verified'])->name('candidates.index');
-
-
-Route::get('/home', function () {
-    return redirect('admin');
-});
 
 
 Route::resource('/kelas', kelasController::class);
-Route::resource('/kandidat',kandidatController::class);
+Route::resource('/kandidat', kandidatController::class);
 
 require __DIR__ . '/auth.php';
