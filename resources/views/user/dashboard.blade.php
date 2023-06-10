@@ -13,7 +13,7 @@
                         <a href="{{ url('dashboard') }}">Dashboard</a>
                     </div>
                     <div class="text-center text-4xl font-bold uppercase tracking-wider">
-                        Statistik Vote
+                        Vote
                     </div>
                     <div class="flex flex-row mx-10 mt-4 font-semibold text-lg">
                         <div class="basis-1/2">
