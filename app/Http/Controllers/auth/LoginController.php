@@ -8,7 +8,7 @@ class LoginController extends Controller
 {
     public function authenticated(Request $request, $user)
     {
-        if ($user->hasRole('admin')) {
+        if ($user->role('admin')) {
             return redirect()->route('admin.page');
         } else {
             return redirect()->route('user.page');

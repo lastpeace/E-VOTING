@@ -10,10 +10,10 @@
             <div class="mx-auto h-auto">
                 <div class="rounded-t-[50px] bg-white shadow-sm sm:h-auto md:h-auto lg:h-auto xl:h-auto">
                     <div class="ml-4 p-6 text-slate-400 text-sm">
-                        <a href="{{ route('dashboard') }}">Dashboard</a>
+                        <a href="{{ url('dashboard') }}">Dashboard</a>
                     </div>
                     <div class="text-center text-4xl font-bold uppercase tracking-wider">
-                        Statistik Vote
+                        Statistik Vote Admin
                     </div>
                     <div class="flex flex-row mx-10 mt-4 font-semibold text-lg">
                         <div class="basis-1/2">
@@ -31,17 +31,18 @@
                         10/100
                     </div>
                     <div class="container mx-auto px-6 py-5 sm:flex sm:gap-7 w-full">
-                        <?php $i = $data->firstItem() ?>
-                            @foreach ($data as $item)
-                        <div class="mx-auto rounded-lg shadow-lg my-5">
-                            <p class="uppercase text-center text-2xl font-semibold py-5">{{$item->nama_kandidat}}</p>
-                            @if($item->foto)
-                                <img class="mx-auto w-[300px]" src="{{ url('foto').'/'.$item->foto }}"
-                                    alt="">
+                        <?php $i = $data->firstItem(); ?>
+                        @foreach ($data as $item)
+                            <div class="mx-auto rounded-lg shadow-lg my-5">
+                                <p class="uppercase text-center text-2xl font-semibold py-5">{{ $item->nama_kandidat }}
+                                </p>
+                                @if ($item->foto)
+                                    <img class="mx-auto w-[300px]" src="{{ url('foto') . '/' . $item->foto }}"
+                                        alt="">
                                 @endif
-                            <p class="text-center mx-auto font-bold py-5 text-lg">Jumlah Vote : 1</p>
-                        </div>
-                        <?php $i++?>
+                                <p class="text-center mx-auto font-bold py-5 text-lg">Jumlah Vote : 1</p>
+                            </div>
+                            <?php $i++; ?>
                         @endforeach
                     </div>
                 </div>

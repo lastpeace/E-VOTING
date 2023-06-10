@@ -5,19 +5,20 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ url('dashboard') }}">
                         <img src="{{ asset('/Source') }}/evot.png " width="40">
                     </a>
                 </div>
                 <div class="shrink-0 flex items-center ml-4  font-extrabold text-xl ">
-                    <a class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-cyan-500 hover:to-purple-500" href="{{ route('dashboard') }}  ">
+                    <a class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-cyan-500 hover:to-purple-500"
+                        href="{{ url('dashboard') }}  ">
                         {{ __('E-VOTING') }}
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-5 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="url('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-dropdown-table>
@@ -106,13 +107,13 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden m-4">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="url('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard Admin') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')">
+            <x-responsive-nav-link :href="url('dashboard')">
                 {{ __('Tables') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('dashboard')">
+            <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="url('dashboard')">
                 {{ __('Table User') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('kandidat.index')">
@@ -139,7 +140,8 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')"
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

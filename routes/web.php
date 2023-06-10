@@ -3,7 +3,6 @@ namespace App\Http\Middleware;
 
 use App\Http\Middleware\CekRole;
 
-use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -26,10 +25,10 @@ Route::get('/', function () {
     return view('Welcome');
 });
 
-Route::get('/dashboard', function () {
-    $data = Kandidat::paginate();
-    return view('dashboard')->with('data', $data);
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     $data = Kandidat::paginate();
+//     return view('dashboard')->with('data', $data);
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,6 +36,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+// Route untuk pengguna (user)
+Route::middleware(['auth', 'CekRole:voter'])->group(function () {
+    Route::get('/user/dashboard', [HomeController::class, 'indexUser'])->name('user.dashboard');
+    // Tambahkan route lain untuk pengguna di sini
+});
+
+// Route untuk admin
+Route::middleware(['auth', 'CekRole:admin'])->group(function () {
+    Route::get('/admin/dashboard', [HomeController::class, 'indexAdmin'])->name('admin.dashboard');
+    // Tambahkan route lain untuk admin di sini
+});
 
 Route::resource('/kelas', kelasController::class);
 Route::resource('/kandidat', kandidatController::class);
