@@ -2,7 +2,7 @@
 namespace App\Http\Middleware;
 
 use App\Http\Middleware\CekRole;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -27,8 +27,13 @@ Route::get('/', function () {
 
 // Route::get('/dashboard', function () {
 //     $data = Kandidat::paginate();
-//     return view('dashboard')->with('data', $data);
-// })->middleware(['auth', 'verified'])->name('dashboard');
+//     return view('/user/dashboard')->with('data', $data);
+// })->middleware(['auth', 'CekRole:voter'])->name('user.dashboard');
+
+// Route::get('/dashboard', function () {
+//     $data = Kandidat::paginate();
+//     return view('/admin/dashboard')->with('data', $data);
+// })->middleware(['auth', 'CekRole:admin'])->name('admin.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,17 +42,26 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// Route untuk pengguna (user)
-Route::middleware(['auth', 'CekRole:voter'])->group(function () {
-    Route::get('/user/dashboard', [HomeController::class, 'indexUser'])->name('user.dashboard');
-    // Tambahkan route lain untuk pengguna di sini
-});
+Route::get('/dashboard', function () {
+    if (Auth::user()->role === 'admin') {
+        // Aksi untuk admin
+        $data = Kandidat::paginate();
+        return view('admin.dashboard')->with('data', $data);
+    } elseif (Auth::user()->role === 'voter') {
+        // Aksi untuk pengguna
+        $data = Kandidat::paginate();
+        return view('user.dashboard')->with('data', $data);
+    } else {
+        // Aksi jika peran tidak valid
+        return redirect()->back()->with('error', 'Peran tidak valid');
+    }
+})->middleware(['auth'])->name('dashboard');
 
-// Route untuk admin
-Route::middleware(['auth', 'CekRole:admin'])->group(function () {
-    Route::get('/admin/dashboard', [HomeController::class, 'indexAdmin'])->name('admin.dashboard');
-    // Tambahkan route lain untuk admin di sini
-});
+// // Route untuk admin
+// Route::middleware(['auth', 'CekRole:admin'])->group(function () {
+//     Route::get('/admin/dashboard', [HomeController::class, 'indexAdmin'])->name('admin.dashboard');
+//     // Tambahkan route lain untuk admin di sini
+// });
 
 Route::resource('/kelas', kelasController::class);
 Route::resource('/kandidat', kandidatController::class);

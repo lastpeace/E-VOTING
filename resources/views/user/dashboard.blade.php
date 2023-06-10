@@ -40,7 +40,7 @@
                                     <img class="mx-auto w-[300px]" src="{{ url('foto') . '/' . $item->foto }}"
                                         alt="">
                                 @endif
-                                <p class="text-center mx-auto font-bold py-5 text-lg">Jumlah Vote : 1</p>
+
                             </div>
                             <?php $i++; ?>
                         @endforeach
