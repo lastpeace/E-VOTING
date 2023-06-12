@@ -19,7 +19,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-poppins antialiased bg-gradient-to-br from-sky-500 to-purple-500">
+<body class="font-poppins antialiased bg-gradient-to-br from-blue-500 to-purple-500">
     <div class="">
         @include('layouts.navigation')
 
@@ -34,7 +34,7 @@
 
         <!-- Page Content -->
         <main>
-            {{ $slot }}
+        @yield('content')
         </main>
     </div>
 </body>

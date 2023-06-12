@@ -1,11 +1,12 @@
+@extends('layouts.user')
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="{{ asset('/Source') }}/evot.png">
-        <title>Aplikasi Evoting</title>
+        <title>E-Voting | Home</title>
         <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"> -->
     </head>
-    <x-app-layout>
+@section('content')
         <div class="pt-2">
             @if(count($data))
             <div class="mx-auto h-auto bg-white rounded-t-[50px]">
@@ -77,4 +78,4 @@
             </div>
             @endif
         </div>
-    </x-app-layout>
+@endsection
