@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Kandidat extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama_kandidat','foto','visi','misi'];
+    protected $fillable = [
+        'nama_kandidat',
+        'foto',
+        'visi',
+        'misi'
+    ];
     protected $table = 'kandidat';
     public $timestamps = false;
 }
