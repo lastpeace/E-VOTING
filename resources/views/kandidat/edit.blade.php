@@ -1,3 +1,4 @@
+@extends('layouts.admin')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -5,7 +6,7 @@
     <script src="https://kit.fontawesome.com/19f53fb20b.js" crossorigin="anonymous"></script>
     <title>E-Voting | Kandidat</title>
 </head>
-<x-app-layout>
+@section('content')
     <div class="pt-2 h-auto sm">
         <div class="mx-auto h-auto sm bg-white rounded-t-[50px]">
             <div class="ml-4 pl-6 pt-6 text-slate-400 text-sm">
@@ -58,4 +59,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+    @endsection
