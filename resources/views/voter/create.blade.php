@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf @method('POST');
+    <form method="POST" action="{{ route('voter.store') }}">
+        @csrf @method('POST')
 
         <!-- Name -->
         <div>

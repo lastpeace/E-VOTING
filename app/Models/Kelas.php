@@ -10,5 +10,10 @@ class Kelas extends Model
     use HasFactory;
     protected $fillable = ['nama_kelas'];
     protected $table = 'kelas';
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
     public $timestamps = false;
 }
