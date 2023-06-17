@@ -53,7 +53,7 @@
 
                         <x-slot name="content">
                             @if (Auth::user()->role === 'admin')
-                                <x-dropdown-link :href="route('profile.edit')">
+                                <x-dropdown-link :href="route('voter.index')">
                                     {{ __('Daftar User') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('kandidat.index')">

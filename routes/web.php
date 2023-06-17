@@ -8,7 +8,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\kandidatController;
+use App\Http\Controllers\VoterController;
 use App\Models\Kandidat;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,7 @@ use App\Models\Kandidat;
 Route::get('/', function () {
     return view('Welcome');
 });
+
 
 // Route::get('/dashboard', function () {
 //     $data = Kandidat::paginate();
@@ -62,8 +65,18 @@ Route::get('/dashboard', function () {
 //     Route::get('/admin/dashboard', [HomeController::class, 'indexAdmin'])->name('admin.dashboard');
 //     // Tambahkan route lain untuk admin di sini
 // });
-
+Route::resource('/voter', VoterController::class);
 Route::resource('/kelas', kelasController::class);
 Route::resource('/kandidat', kandidatController::class);
 
+// Route::post('registeradmin', [RegisteredUserController::class, 'create'])->name('registeradmin');
+
+
+
+// Route::get('/register', [RegisteredUserController::class, 'create'])
+//     ->middleware(['guest'])
+//     ->name('register');
+
+// Route::post('/register', [RegisteredUserController::class, 'store'])
+//     ->middleware(['guest']);
 require __DIR__ . '/auth.php';
