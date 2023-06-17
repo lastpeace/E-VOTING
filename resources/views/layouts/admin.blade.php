@@ -37,6 +37,9 @@
         @yield('content')
         </main>
     </div>
+    <footer>
+        <div class="bg-slate-700 w-full text-white p-2">©Copyright - E-Voting</div>
+    </footer>
 </body>
 
 </html>
