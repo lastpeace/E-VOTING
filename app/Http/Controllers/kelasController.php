@@ -5,21 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Kelas;
-
+use App\Models\User;
 
 class kelasController extends Controller
 {
-   
+
     public function index()
     {
         $data = kelas::paginate();
-        return view('kelas.index')->with('data',$data);
+        return view('kelas.index')->with('data', $data);
     }
 
-    
+
     public function create()
     {
-        return view ('kelas.create');
+        return view('kelas.create');
     }
 
     /**
@@ -27,39 +27,44 @@ class kelasController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('nama_kelas',$request->kelas);
+        Session::flash('nama_kelas', $request->kelas);
 
-        $request->validate([
-            'kelas'=>'required|unique:kelas,nama_kelas'
+        $request->validate(
+            [
+                'kelas' => 'required|unique:kelas,nama_kelas'
 
-        ],
-        [
-            'kelas.required' => 'Kelas Wajib diisi',
-            'kelas.unique' => 'Nama Kelas sudah ada'
-        ]);
+            ],
+            [
+                'kelas.required' => 'Kelas Wajib diisi',
+                'kelas.unique' => 'Nama Kelas sudah ada'
+            ]
+        );
         $data = [
-            'nama_kelas'=>$request->kelas
+            'nama_kelas' => $request->kelas
         ];
         Kelas::create($data);
-        
+
         return redirect()->to('kelas')->with('Berhasil menambahkan kelas');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $kelas = Kelas::findOrFail($id);
+        $siswa = User::where('kelas_id', $id)->get();
+        return view('kelas.show', compact('kelas', 'siswa'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $data = kelas::where('id',$id)->first();
-        return view('kelas.edit')->with('data',$data);
+        $data = kelas::where('id', $id)->first();
+        return view('kelas.edit')->with('data', $data);
     }
 
     /**
@@ -67,20 +72,22 @@ class kelasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Session::flash('nama_kelas',$request->kelas);
-        $request->validate([
-            'kelas'=>'required|unique:kelas,nama_kelas'
+        Session::flash('nama_kelas', $request->kelas);
+        $request->validate(
+            [
+                'kelas' => 'required|unique:kelas,nama_kelas'
 
-        ],
-        [
-            'kelas.required' => 'Kelas Wajib diisi',
-            'kelas.unique' => 'Nama Kelas sudah ada'
-        ]);
+            ],
+            [
+                'kelas.required' => 'Kelas Wajib diisi',
+                'kelas.unique' => 'Nama Kelas sudah ada'
+            ]
+        );
         $data = [
-            'nama_kelas'=>$request->kelas
+            'nama_kelas' => $request->kelas
         ];
-        Kelas::where('id',$id)->update($data);
-        
+        Kelas::where('id', $id)->update($data);
+
         return redirect()->to('kelas')->with('Berhasil melakukan update kelas');
     }
 
@@ -89,7 +96,7 @@ class kelasController extends Controller
      */
     public function destroy(string $id)
     {
-        kelas::where('id',$id)->delete();
-        return redirect()->to('kelas')->with('Kelas berhasil dihapus'); 
+        kelas::where('id', $id)->delete();
+        return redirect()->to('kelas')->with('Kelas berhasil dihapus');
     }
 }

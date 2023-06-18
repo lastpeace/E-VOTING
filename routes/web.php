@@ -71,11 +71,12 @@ Route::resource('/kandidat', kandidatController::class);
 
 // Route::post('registeradmin', [RegisteredUserController::class, 'create'])->name('registeradmin');
 
+Route::get('kelas/{id}/show', [kelasController::class, 'show'])->name('kelas.show');
 
 
 // Route::get('/register', [RegisteredUserController::class, 'create'])
 //     ->middleware(['guest'])
-//     ->name('register');
+//     ->name('register');  
 
 // Route::post('/register', [RegisteredUserController::class, 'store'])
 //     ->middleware(['guest']);
