@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,15 @@
             </div>
             <div class="container mx-auto">
                 <div class="p-8">
+                    @if ($errors->any())
+                        <div class="bg-red-200 text-red-600 text-sm mx-auto w-3/4 p-4 rounded-lg">
+                            <ul>
+                                @foreach ($errors->all() as $item)
+                                    <li>{{ $item }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form action=" {{ url('kelas') }} " method="POST">
                         @csrf
                         <div>
@@ -23,15 +33,6 @@
                             <input class="rounded-full h-7 w-full" type="text" name="kelas"
                                 value=" {{ Session::get('nama_kelas') }}" placeholder="Masukkan Kelas">
                         </div>
-                        @if ($errors->any())
-                        <div class="text-red-500 text-sm">
-                            <ul>
-                                @foreach ($errors->all() as $item)
-                                <li>{{$item}}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
                         <div class="text-end mt-1">
                             <a class="bg-red-500 text-white py-2.5 px-4 rounded-full shadow-md hover:bg-red-600 text-sm font-semibold transition-all ease-in-out cursor-pointer mt-1"
                                 href="{{ route('kelas.index') }}">Back</a>
@@ -44,4 +45,4 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection

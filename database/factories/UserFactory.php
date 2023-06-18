@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => bcrypt('user12345'),
             // password
-            'role' => 'admin',
+            // 'role' => 'admin',
             'kelas_id' => function () {
                 return Kelas::factory()->create()->id;
             },

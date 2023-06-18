@@ -69,11 +69,10 @@ class VoterController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required'],
             'kelas_id' => ['required', 'exists:' . Kelas::class . ',id'],
         ]);
 
@@ -84,7 +83,7 @@ class VoterController extends Controller
             'kelas_id' => $request->kelas_id,
         ]);
 
-        return redirect('voter');
+        return redirect()->to('voter')->with('Berhasil menambahkan voter');
 
     }
     /**

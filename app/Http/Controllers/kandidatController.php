@@ -38,9 +38,9 @@ class kandidatController extends Controller
         ],
         [
             'nama_kandidat.required' => 'Nama Wajib diisi',
-            'foto.required' => 'foto wajib diisi',
-            'visi.required' => 'visi Wajib diisi',
-            'misi.required' => 'misi Wajib diisi'
+            'foto.required' => 'Foto wajib diisi',
+            'visi.required' => 'Visi Wajib diisi',
+            'misi.required' => 'Misi Wajib diisi'
         ]);
         $foto_file = $request->file('foto');
         $foto_ekstensi = $foto_file->extension();

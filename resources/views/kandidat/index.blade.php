@@ -162,7 +162,8 @@
                                                     <div class="mx-auto p-2">
                                                         <form class="m-auto"
                                                             onsubmit="return confirm('Yakin akan menghapus data?')"
-                                                            action="{{ url('kandidat/' . $item->id_calon) }}" method="POST">
+                                                            action="{{ url('kandidat/' . $item->id_calon) }}"
+                                                            method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button
@@ -253,7 +254,8 @@
                                                     <div class="mx-auto p-2">
                                                         <form class="m-auto"
                                                             onsubmit="return confirm('Yakin akan menghapus data?')"
-                                                            action="{{ url('kandidat/' . $item->id_calon) }}" method="POST">
+                                                            action="{{ url('kandidat/' . $item->id_calon) }}"
+                                                            method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button

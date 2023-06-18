@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/19f53fb20b.js" crossorigin="anonymous"></script>
-    <title>E-Voting | voter</title>
+    <title>E-Voting | Voter</title>
 </head>
 @section('content')
     <div class="pt-2 h-auto sm">

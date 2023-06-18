@@ -136,7 +136,7 @@
                                         <th data-priority="3">Email</th>
                                         <th data-priority="4">Role</th>
                                         <th data-priority="5">Kelas</th>
-                                        <th data-priority="6">aksi</th>
+                                        <th data-priority="6">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
