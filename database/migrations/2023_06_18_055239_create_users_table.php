@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->default('voter');
+            $table->foreignId('kelas_id')->constrained()->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

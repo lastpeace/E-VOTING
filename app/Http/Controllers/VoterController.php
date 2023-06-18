@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -30,7 +31,8 @@ class VoterController extends Controller
      */
     public function create()
     {
-        return view('voter.create');
+        $kelasList = Kelas::all();
+        return view('voter.create')->with('kelas', $kelasList);
     }
 
     /**
@@ -68,17 +70,18 @@ class VoterController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'kelas_id' => ['required', 'exists:' . Kelas::class . ',id'],
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'kelas_id' => $request->kelas_id,
         ]);
 
         return redirect('voter');

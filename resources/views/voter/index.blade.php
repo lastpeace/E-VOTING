@@ -107,13 +107,13 @@
 @section('content')
     <div class="pt-2">
         @if (count($data))
-            <div class="mx-auto h-auto bg-white rounded-t-[50px]">
+            <div class="mx-auto h-full bg-white rounded-t-[50px]">
                 <div class="ml-4 pl-6 pt-6 text-slate-400 text-sm">
                     <a href="{{ route('dashboard') }}">Dashboard</a> >
                     <a href="{{ route('voter.index') }}">Voter</a>
                 </div>
                 <div class="mx-auto pt-4 text-center text-4xl font-bold uppercase tracking-wider">
-                    <h1>data Voter nih</h1>
+                    <h1>data Voter</h1>
                 </div>
                 <div class="container mx-auto">
                     <div class="p-8">
@@ -135,7 +135,8 @@
                                         <th data-priority="2">Nama Voter</th>
                                         <th data-priority="3">Email</th>
                                         <th data-priority="4">Role</th>
-                                        <th data-priority="5">aksi</th>
+                                        <th data-priority="5">Kelas</th>
+                                        <th data-priority="6">aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -146,6 +147,7 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->role }}</td>
+                                            <td>{{ $item->kelas->nama_kelas }}</td>
                                             <td>
                                                 {{-- <div class="container flex p-2 w-3/4 mx-auto">
                                                     <div class="m-auto p-2">
