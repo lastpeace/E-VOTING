@@ -113,7 +113,7 @@
                     <a href="{{ route('voter.index') }}">Voter</a>
                 </div>
                 <div class="mx-auto pt-4 text-center text-4xl font-bold uppercase tracking-wider">
-                    <h1>data Voter</h1>
+                    <h1>data Voter nih</h1>
                 </div>
                 <div class="container mx-auto">
                     <div class="p-8">
