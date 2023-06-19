@@ -9,4 +9,9 @@ class Vote extends Model
 {
     use HasFactory;
     protected $fillable = ['calon_id'];
+
+    public function kandidats()
+    {
+        return $this->belongsTo(Kandidat::class);
+    }
 }

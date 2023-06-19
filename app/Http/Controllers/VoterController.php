@@ -35,33 +35,6 @@ class VoterController extends Controller
         return view('voter.create')->with('kelas', $kelasList);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     $request->validate(
-    //         [
-    //             'name' => 'required',
-    //             'email' => 'required',
-    //             'password' => 'required'
-    //         ],
-    //         [
-    //             'name.required' => 'Nama Wajib diisi',
-    //             'email.required' => 'email wajib diisi',
-    //             'password.required' => 'pass Wajib diisi',
-    //         ]
-    //     );
-
-    //     $data = [
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'password' => $request->password,
-    //     ];
-    //     user::create($data);
-
-    //     return redirect()->to('voter')->with('Berhasil menambahkan Voter');
-    // }
     public function decrypt()
     {
         $decrypted = Crypt::decryptString('password');

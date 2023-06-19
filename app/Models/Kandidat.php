@@ -15,5 +15,9 @@ class Kandidat extends Model
         'misi'
     ];
     protected $table = 'kandidat';
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
     public $timestamps = false;
 }

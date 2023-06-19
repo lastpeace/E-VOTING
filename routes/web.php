@@ -10,6 +10,8 @@ use App\Http\Controllers\kelasController;
 use App\Http\Controllers\kandidatController;
 use App\Http\Controllers\VoterController;
 use App\Models\Kandidat;
+use App\Models\Vote;
+use App\Models\User;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\VoteController;
 
@@ -26,8 +28,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/dashboard', function () {
     if (Auth::user()->role === 'admin') {
         // Aksi untuk admin
-        $data = Kandidat::paginate();
-        return view('admin.dashboard')->with('data', $data);
+        // $vote = Vote::all();
+        $userAdmin = User::select(User::raw('COUNT(role) as total_admin'))->where('role', 'admin')->get();
+        $userTotal = User::count();
+        $voteTotal = Vote::count();
+        $results = Vote::select(Vote::raw('COUNT(*) as total_vote'))->groupBy('calon_id')->get();
+        $kandidat = Kandidat::all();
+        return view('admin.dashboard', compact('results', 'kandidat', 'voteTotal', 'userTotal', 'userAdmin'));
     } elseif (Auth::user()->role === 'voter') {
         // Aksi untuk pengguna
         $data = Kandidat::paginate();
