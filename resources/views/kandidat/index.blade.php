@@ -255,7 +255,7 @@
                                                         <form class="m-auto"
                                                             onsubmit="return confirm('Yakin akan menghapus data?')"
                                                             action="{{ url('kandidat/' . $item->id_calon) }}"
-                                                            method="POST">
+                                                            method='POST'>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button

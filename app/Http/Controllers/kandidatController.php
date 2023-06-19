@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kandidat;
+use App\Models\User;
 use Illuminate\Support\Facades\File;
 
 class kandidatController extends Controller
@@ -14,7 +15,7 @@ class kandidatController extends Controller
     public function index()
     {
         $data = Kandidat::paginate();
-        return view('kandidat.index')->with('data',$data);
+        return view('kandidat.index')->with('data', $data);
     }
 
     /**
@@ -30,31 +31,34 @@ class kandidatController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_kandidat'=>'required',
-            'foto'=>'mimes:jpg,png,jpeg|image|max:10000',
-            'visi'=>'required',
-            'misi'=>'required'
-        ],
-        [
-            'nama_kandidat.required' => 'Nama Wajib diisi',
-            'foto.required' => 'Foto wajib diisi',
-            'visi.required' => 'Visi Wajib diisi',
-            'misi.required' => 'Misi Wajib diisi'
-        ]);
+        $request->validate(
+            [
+                'nama_kandidat' => 'required',
+                'foto' => 'mimes:jpg,png,jpeg|image|max:10000',
+                'visi' => 'required',
+                'misi' => 'required',
+            ],
+            [
+                'nama_kandidat.required' => 'Nama Wajib diisi',
+                'foto.required' => 'Foto wajib diisi',
+                'visi.required' => 'Visi Wajib diisi',
+                'misi.required' => 'Misi Wajib diisi',
+            ],
+        );
         $foto_file = $request->file('foto');
         $foto_ekstensi = $foto_file->extension();
-        $foto_nama = date('ymdhis').".".$foto_ekstensi;
-        $foto_file->move(public_path('foto'),$foto_nama);
+        $foto_nama = date('ymdhis') . '.' . $foto_ekstensi;
+        $foto_file->move(public_path('foto'), $foto_nama);
         $data = [
-            'nama_kandidat'=>$request->nama_kandidat,
+            'nama_kandidat' => $request->nama_kandidat,
             'foto' => $foto_nama,
             'visi' => $request->visi,
-            'misi' => $request->misi
+            'misi' => $request->misi,
         ];
         Kandidat::create($data);
-        
-        return redirect()->to('kandidat')->with('Berhasil menambahkan kandidat');
+        return redirect()
+            ->to('kandidat')
+            ->with('Berhasil menambahkan kandidat');
     }
 
     /**
@@ -70,8 +74,8 @@ class kandidatController extends Controller
      */
     public function edit(string $id)
     {
-        $data = kandidat::where('id_calon',$id)->first();
-        return view('kandidat.edit')->with('data',$data);
+        $data = Kandidat::where('id_calon', $id)->first();
+        return view('kandidat.edit')->with('data', $data);
     }
 
     /**
@@ -79,47 +83,54 @@ class kandidatController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'nama_kandidat'=>'required',
-            'foto'=>'mimes:jpg,png,jpeg|image|max:10000',
-            'visi'=>'required',
-            'misi'=>'required'
-        ],
-        [
-            'nama_kandidat.required' => 'Nama Wajib diisi',
-            'foto.mimes'=>'Foto hanya boleh berekstensi jpg, png, jpeg dan berukuran <10mb',
-            'visi.required' => 'visi Wajib diisi',
-            'misi.required' => 'misi Wajib diisi'
-        ]);
-        
+        $request->validate(
+            [
+                'nama_kandidat' => 'required',
+                'foto' => 'mimes:jpg,png,jpeg|image|max:10000',
+                'visi' => 'required',
+                'misi' => 'required',
+            ],
+            [
+                'nama_kandidat.required' => 'Nama Wajib diisi',
+                'foto.mimes' => 'Foto hanya boleh berekstensi jpg, png, jpeg dan berukuran <10mb',
+                'visi.required' => 'visi Wajib diisi',
+                'misi.required' => 'misi Wajib diisi',
+            ],
+        );
+
         $data = [
-            'nama_kandidat'=>$request->nama_kandidat,
+            'nama_kandidat' => $request->nama_kandidat,
             'visi' => $request->visi,
-            'misi' => $request->misi
+            'misi' => $request->misi,
         ];
 
-        if($request->hasFile('foto')){
-            $request->validate([
-                'foto'=>'mimes:jpg,png,jpeg|image|max:10000'
-            ],[
-                'foto.mimes' => 'Foto hanya boleh berekstensi jpg, png, jpeg dan berukuran <10mb'
-            ]);
+        if ($request->hasFile('foto')) {
+            $request->validate(
+                [
+                    'foto' => 'mimes:jpg,png,jpeg|image|max:10000',
+                ],
+                [
+                    'foto.mimes' => 'Foto hanya boleh berekstensi jpg, png, jpeg dan berukuran <10mb',
+                ],
+            );
             $foto_file = $request->file('foto');
             $foto_ekstensi = $foto_file->extension();
-            $foto_nama = date('ymdhis').".".$foto_ekstensi;
-            $foto_file->move(public_path('foto'),$foto_nama);
+            $foto_nama = date('ymdhis') . '.' . $foto_ekstensi;
+            $foto_file->move(public_path('foto'), $foto_nama);
 
             $data_foto = kandidat::where('id_calon', $id)->first();
-            File::delete(public_path('foto').'/'.$data_foto->foto);
+            File::delete(public_path('foto') . '/' . $data_foto->foto);
 
-                $data = [
-                    'foto'=>$foto_nama
-                ];
+            $data = [
+                'foto' => $foto_nama,
+            ];
         }
-        
-        Kandidat::where('id_calon',$id)->update($data);
-        
-        return redirect()->to('kandidat')->with('Berhasil melakukan update kandidat');
+
+        Kandidat::where('id_calon', $id)->update($data);
+
+        return redirect()
+            ->to('kandidat')
+            ->with('Berhasil melakukan update kandidat');
     }
 
     /**
@@ -127,9 +138,11 @@ class kandidatController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = kandidat::where('id_calon',$id)->first();
-        File::delete(public_path('foto').'/'.$data->foto);
-        kandidat::where('id_calon',$id)->delete();
-        return redirect()->to('kandidat')->with('Kandidat berhasil dihapus'); 
+        $data = Kandidat::where('id_calon', $id)->first();
+        File::delete(public_path('foto') . '/' . $data->foto);
+        Kandidat::where('id_calon', $id)->delete();
+        return redirect()
+            ->to('kandidat')
+            ->with('Kandidat berhasil dihapus');
     }
 }
