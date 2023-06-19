@@ -10,27 +10,17 @@
 @section('content')
     <div class="pt-2">
         @if (count($data))
-            <div class="mx-auto h-auto bg-white rounded-t-[50px]">
+            <div class="mx-auto h-full bg-white rounded-t-[50px]">
                 <div class="ml-4 p-6 text-slate-400 text-sm">
                     <a href="{{ url('dashboard') }}">Dashboard</a>
                 </div>
-                <div class="text-center text-4xl font-bold uppercase tracking-wider">
-                    Dashboard {{ Auth::user()->name }}
+                <div class="ml-4 px-6 text-xl font-semibold tracking-wider">
+                    Selamat Datang, {{ Auth::user()->name }}
                 </div>
-                <div class="flex flex-row mx-10 mt-4 font-semibold text-lg">
-                    <div class="basis-1/2">
-                        Total Vote
+                <div class="flex flex-row mx-10 mt-4 font-semibold justify-center">
+                    <div>
+                        <h1 class=" text-4xl uppercase">Pemira 2023</h1>
                     </div>
-                    <div class="basis-1/2 text-end">
-                        @php
-                            $date = Carbon\Carbon::now('Asia/jakarta')->toDateString();
-                            $newDate = Carbon\Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
-                            echo $newDate;
-                        @endphp
-                    </div>
-                </div>
-                <div class="mx-10 font-semibold text-xl">
-                    10/100
                 </div>
                 <div class="container mx-auto px-6 py-5 sm:flex sm:gap-7 w-full">
                     <?php $i = $data->firstItem(); ?>

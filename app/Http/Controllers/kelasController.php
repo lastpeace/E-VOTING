@@ -12,7 +12,7 @@ class kelasController extends Controller
 
     public function index()
     {
-        $data = kelas::paginate();
+        $data = kelas::paginate(5);
         return view('kelas.index')->with('data', $data);
     }
 
@@ -53,7 +53,7 @@ class kelasController extends Controller
     public function show($id)
     {
         $kelas = Kelas::findOrFail($id);
-        $siswa = User::where('kelas_id', $id)->get();
+        $siswa = User::where('kelas_id', $id)->paginate(5);
         return view('kelas.show', compact('kelas', 'siswa'));
     }
 

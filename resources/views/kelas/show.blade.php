@@ -116,58 +116,50 @@
             <div class="mx-auto pt-4 text-center text-4xl font-bold uppercase tracking-wider">
                 <h1>Data Siswa</h1>
             </div>
-            <div class="pl-8 py-5 flex">
-                <a class="bg-red-600 text-white p-2.5 rounded-full shadow-md hover:bg-red-700 text-sm font-semibold transition-all ease-in-out"
-                    href="{{ route('kelas.index') }}">Kembali</a>
-            </div>
 
             <!--Container-->
-            <div class="w-full md:w-5/6 xl:w-3/4 mx-auto mb-5">
-
-
-                <!--Card-->
-                <div id='recipients' class="p-8 mt-6 lg:mt-0 lg:w-full rounded shadow bg-white">
-
-                    <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                        <thead>
-                            <tr>
-                                <th data-priority="1">No</th>
-                                <th data-priority="2">Nama Voter</th>
-                                <th data-priority="3">Email</th>
-                                <th data-priority="4">isVote</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($siswa as $index => $item)
-                                <tr style="text-align: center">
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->isVote }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+            <div class="container mx-auto">
+                <div class="pl-8 py-5 flex">
+                    <a class="bg-red-600 text-white p-2.5 rounded-full shadow-md hover:bg-red-700 text-sm font-semibold transition-all ease-in-out"
+                        href="{{ route('kelas.index') }}">Kembali</a>
                 </div>
-                <!--/Card-->
+                <div class="w-full md:w-5/6 xl:w-3/4 mx-auto mb-5">
+                    {{-- table --}}
+                    <div class="shadow-lg p-4 rounded-lg">
+
+                        <table class="table-auto w-full text-center bg-slate-100 my-4">
+                            <thead class="bg-white border-t-2 h-10 border-slate-950">
+                                <tr class=" border-b border-slate-300">
+                                    <th>No</th>
+                                    <th>Nama Voter</th>
+                                    <th>Email</th>
+                                    <th>isVote</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = $siswa->firstItem(); ?>
+                                @foreach ($siswa as $index => $item)
+                                    <tr class="bg-gray-100 border-b hover:bg-blue-100">
+                                        <td>{{ $i }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        @if ($item->isVote == 0)
+                                            <td>Belum Voting</td>
+                                            @if ($item->isVote == 1)
+                                                <td>Sudah Voting</td>
+                                            @endif
+                                        @endif
+                                    </tr>
+                                    <?php $i++; ?>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <hr class="py-2 border-black">
+                        {!! $siswa->withQueryString()->links() !!}
+                    </div>
+                </div>
             </div>
             <!--/container-->
-            <!-- jQuery -->
-            <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-            <!--Datatables -->
-            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-            <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-            <script>
-                $(document).ready(function() {
-
-                    var table = $('#example').DataTable({
-                            responsive: true
-                        })
-                        .columns.adjust()
-                        .responsive.recalc();
-                });
-            </script>
         </div>
     </div>
 @endsection

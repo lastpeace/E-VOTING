@@ -22,7 +22,7 @@ class VoterController extends Controller
      */
     public function index()
     {
-        $data = user::paginate();
+        $data = user::paginate(5);
         return view('voter.index')->with('data', $data);
     }
 
