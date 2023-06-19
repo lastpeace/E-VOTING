@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kandidat;
+use App\Models\User;
 use Illuminate\Support\Facades\File;
 
 class kandidatController extends Controller
@@ -46,17 +47,18 @@ class kandidatController extends Controller
         );
         $foto_file = $request->file('foto');
         $foto_ekstensi = $foto_file->extension();
-        $foto_nama = date('ymdhis') . "." . $foto_ekstensi;
+        $foto_nama = date('ymdhis') . '.' . $foto_ekstensi;
         $foto_file->move(public_path('foto'), $foto_nama);
         $data = [
             'nama_kandidat' => $request->nama_kandidat,
             'foto' => $foto_nama,
             'visi' => $request->visi,
-            'misi' => $request->misi
+            'misi' => $request->misi,
         ];
         Kandidat::create($data);
-
-        return redirect()->to('kandidat')->with('Berhasil menambahkan kandidat');
+        return redirect()
+            ->to('kandidat')
+            ->with('Berhasil menambahkan kandidat');
     }
 
     /**
@@ -72,7 +74,7 @@ class kandidatController extends Controller
      */
     public function edit(string $id)
     {
-        $data = kandidat::where('id_calon', $id)->first();
+        $data = Kandidat::where('id_calon', $id)->first();
         return view('kandidat.edit')->with('data', $data);
     }
 
@@ -99,7 +101,7 @@ class kandidatController extends Controller
         $data = [
             'nama_kandidat' => $request->nama_kandidat,
             'visi' => $request->visi,
-            'misi' => $request->misi
+            'misi' => $request->misi,
         ];
 
         if ($request->hasFile('foto')) {
@@ -110,14 +112,14 @@ class kandidatController extends Controller
             ]);
             $foto_file = $request->file('foto');
             $foto_ekstensi = $foto_file->extension();
-            $foto_nama = date('ymdhis') . "." . $foto_ekstensi;
+            $foto_nama = date('ymdhis') . '.' . $foto_ekstensi;
             $foto_file->move(public_path('foto'), $foto_nama);
 
             $data_foto = kandidat::where('id_calon', $id)->first();
             File::delete(public_path('foto') . '/' . $data_foto->foto);
 
             $data = [
-                'foto' => $foto_nama
+                'foto' => $foto_nama,
             ];
         }
 

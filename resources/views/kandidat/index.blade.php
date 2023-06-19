@@ -83,11 +83,13 @@
                         <hr class="py-2 border-black">
                         {!! $data->withQueryString()->links() !!}
                     </div>
-
+                    <!--/Card-->
                 </div>
-                <!--/container-->
+
             </div>
+            <!--/container-->
         </div>
+    </div>
 
     </div>
 @endsection
