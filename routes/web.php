@@ -32,9 +32,8 @@ Route::get('/dashboard', function () {
         $userAdmin = User::select(User::raw('COUNT(role) as total_admin'))->where('role', 'admin')->get();
         $userTotal = User::count();
         $voteTotal = Vote::count();
-        $results = Vote::select(Vote::raw('COUNT(*) as total_vote'))->groupBy('calon_id')->get();
         $kandidat = Kandidat::all();
-        return view('admin.dashboard', compact('results', 'kandidat', 'voteTotal', 'userTotal', 'userAdmin'));
+        return view('admin.dashboard', compact('kandidat', 'voteTotal', 'userTotal', 'userAdmin'));
     } elseif (Auth::user()->role === 'voter') {
         // Aksi untuk pengguna
         $data = Kandidat::paginate();

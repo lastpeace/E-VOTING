@@ -129,22 +129,32 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden m-4">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="url('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard Admin') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="url('dashboard')">
-                {{ __('Tables') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="url('dashboard')">
-                {{ __('Table User') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('kandidat.index')">
-                {{ __('Table Candidate') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('kelas.index')">
-                {{ __('Table Kelas') }}
-            </x-responsive-nav-link>
+            @if (Auth::user()->role == 'admin')
+
+                <x-responsive-nav-link :href="url('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard Admin') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="url('dashboard')">
+                    {{ __('Tables') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="url('dashboard')">
+                    {{ __('Table User') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('kandidat.index')">
+                    {{ __('Table Candidate') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link class="ml-4 text-sm text-slate-400" :href="route('kelas.index')">
+                    {{ __('Table Kelas') }}
+                </x-responsive-nav-link>
         </div>
+    @else
+        @if (Auth::user()->role == 'voter')
+            <x-responsive-nav-link :href="url('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Dashboard Voter') }}
+            </x-responsive-nav-link>
+        @endif
+
+        @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-2 pb-1 border-t border-gray-200">

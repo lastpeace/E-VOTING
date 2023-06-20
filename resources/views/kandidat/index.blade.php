@@ -9,6 +9,17 @@
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <style>
+        .tinymce-container ul {
+            list-style-type: disc;
+            /* Add other styling as needed */
+        }
+
+        .tinymce-container ol {
+            list-style-type: decimal;
+            /* Add other styling as needed */
+        }
+    </style>
     <title>E-Voting | Kandidat</title>
 </head>
 @section('content')
@@ -48,8 +59,8 @@
                                     <tr class="bg-gray-100 border-b hover:bg-blue-100">
                                         <td>{{ $i }}</td>
                                         <td>{{ $item->nama_kandidat }}</td>
-                                        <td>{!! $item->visi !!}</td>
-                                        <td>{!! $item->misi !!}</td>
+                                        <td class="tinymce-container">{!! \Illuminate\Support\Str::limit($item->visi, 90) !!}</td>
+                                        <td class="tinymce-container">{!! \Illuminate\Support\Str::limit($item->misi, 90) !!}</td>
                                         <td>
                                             @if ($item->foto)
                                                 <img class="w-100 h-100" src="{{ url('foto') . '/' . $item->foto }}"

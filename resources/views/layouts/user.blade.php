@@ -39,7 +39,7 @@
             @yield('content')
         </main>
         <footer>
-            <div class="bg-slate-700 w-full text-white p-2">©Copyright - E-Voting</div>
+            <div class="bg-slate-700 w-full -mt-8 text-white p-2">©Copyright - E-Voting</div>
         </footer>
     </div>
 </body>

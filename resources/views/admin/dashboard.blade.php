@@ -9,11 +9,11 @@
 </head>
 @section('content')
     <div class="pt-2">
-        <div class="mx-auto h-full  bg-white rounded-t-[50px]">
+        <div class="mx-auto h-auto md:h-full  bg-white rounded-t-[50px]">
             <div class="ml-4 p-6 text-slate-400 text-sm">
                 <a href="{{ url('dashboard') }}">Dashboard</a>
             </div>
-            <div class="text-center text-4xl font-bold uppercase tracking-wider">
+            <div class="text-center text-4xl font-bold uppercase tracking-wider mx-10 ">
                 Statistik Vote Admin
             </div>
             <div class="flex flex-row mx-10 mt-4 font-semibold text-lg">
@@ -33,7 +33,7 @@
                     {{ $voteTotal }}/{{ $userTotal - $user->total_admin }}
                 @endforeach
             </div>
-            <div class="grid grid-cols-3 mx-16 my-20">
+            <div class="grid md:grid-cols-3 gap-5 md:gap-0 mx-16 my-20">
                 @foreach ($kandidat as $item)
                     <div class="mx-auto rounded-t-lg shadow-lg bg-white w-3/4">
                         <p class="uppercase text-center text-2xl font-semibold pt-5">
@@ -42,19 +42,18 @@
                         @if ($item->foto)
                             <img class="p-4 mx-auto w-[300px]" src="{{ url('foto') . '/' . $item->foto }}" alt="">
                         @endif
-                        <p>{!! $item->visi !!}</p>
-                    </div>
-                @endforeach
-
-                @foreach ($results as $data)
-                    <div class="mx-auto rounded-b-lg shadow-lg bg-white w-3/4">
+                        @php
+                            $vote = App\Models\Vote::where('calon_id', $item->id_calon)->count();
+                        @endphp
                         <p class="text-center mx-auto font-bold py-5 text-lg">Jumlah Vote :
-                            {{ $data->total_vote }}
+                            {{ $vote }}
                         </p>
                     </div>
                 @endforeach
             </div>
+            <div class="bg-white">
+                &nbsp;
+            </div>
         </div>
-
     </div>
 @endsection
