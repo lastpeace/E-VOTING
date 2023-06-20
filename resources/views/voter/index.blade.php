@@ -125,20 +125,9 @@
                     </div>
                 @endif
                 <div class="container mx-auto">
-                    <div class="p-8 flex gap-2">
-                        <div class=" mt-[10px]">
-
-                            <a class="bg-blue-600 text-white p-2.5 rounded-full shadow-md hover:bg-blue-700 text-sm font-semibold transition-all ease-in-out"
-                                href="{{ url('voter/create') }}">Tambah Voter</a>
-                        </div>
-                        <div>
-                            <form class="w-auto" action="{{ route('updateVote') }}" method="post">
-                                @csrf
-                                <button
-                                    class="bg-orange-600 text-white p-2.5 rounded-full shadow-md hover:bg-orange-700 text-sm font-semibold transition-all ease-in-out"
-                                    type="submit">Reset Vote</button>
-                            </form>
-                        </div>
+                    <div class="p-8">
+                        <a class="bg-blue-600 text-white p-2.5 rounded-full shadow-md hover:bg-blue-700 text-sm font-semibold transition-all ease-in-out"
+                            href="{{ url('voter/create') }}">Tambah Voter</a>
                     </div>
                     <!--Container-->
                     <div class="w-full md:w-5/6 xl:w-3/4 mx-auto mb-5">

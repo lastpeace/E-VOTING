@@ -138,7 +138,7 @@
         </div>
         <div class="mx-10">
             <div
-                class="bg-green-300 rounded-lg mx-auto shadow-lg text-center font-bold uppercase text-green-800 mt-5 p-8 container">
+                class="bg-green-200 rounded-lg mx-auto shadow-lg text-center font-bold uppercase text-green-600 mt-5 p-8 container">
                 <h1>Terimakasih, Anda Sudah Melakukan Voting</h1>
 
             </div>
@@ -223,8 +223,8 @@
                     <div></div>
                     <div class="my-4 w-full">
                         <button
-                            class="bg-red-500 p-3 rounded-full text-white font-semibold hover:bg-red-600 hover:shadow-lg transition-all md:col-end-3 w-full cursor-pointer"
-                            disabled>Vote</button>
+                            class="bg-red-500 p-3 rounded-full text-white font-semibold hover:bg-red-600 hover:shadow-lg transition-all md:col-end-3 w-full cursor-pointer hidden"
+                            disabled>Anda Sudah Voting</button>
                     </div>
             </form>
         </div>

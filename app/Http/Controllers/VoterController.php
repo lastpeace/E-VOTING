@@ -109,7 +109,7 @@ class VoterController extends Controller
         DB::table('votes')
             ->delete();
 
-        return redirect()->to('voter')->with('success', 'Berhasil melakukan reset voting');
+        return redirect()->to('dashboard')->with('success', 'Berhasil melakukan reset voting');
     }
 
     /**
