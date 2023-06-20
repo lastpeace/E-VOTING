@@ -68,8 +68,8 @@
                                     <tr class="bg-gray-100 border-b hover:bg-blue-100">
                                         <td>{{ $i }}</td>
                                         <td>{{ $item->nama_kandidat }}</td>
-                                        <td class="tinymce-container">{!! \Illuminate\Support\Str::limit($item->visi, 90) !!}</td>
-                                        <td class="tinymce-container">{!! \Illuminate\Support\Str::limit($item->misi, 90) !!}</td>
+                                        <td class="tinymce-container text-start">{!! \Illuminate\Support\Str::limit($item->visi, 90) !!}</td>
+                                        <td class="tinymce-container text-start">{!! \Illuminate\Support\Str::limit($item->misi, 90) !!}</td>
                                         <td>
                                             @if ($item->foto)
                                                 <img class="w-100 h-100" src="{{ url('foto') . '/' . $item->foto }}"
