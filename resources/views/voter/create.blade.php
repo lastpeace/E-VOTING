@@ -9,6 +9,11 @@
     <script src="https://kit.fontawesome.com/19f53fb20b.js" crossorigin="anonymous"></script>
     <!-- Insert the blade containing the TinyMCE configuration and source script -->
     <x-head.tinymce-config />
+    <!-- ini buat select2 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <title>E-Voting | Voter</title>
 </head>
 
@@ -54,7 +59,7 @@
                                         name="password" placeholder="Masukkan Password">
                                 </div>
                                 <div>
-                                    <label class="block font-medium text-md" for="name">Kelas</label>
+                                    <label class="block font-medium text-md mb-2" for="name">Kelas</label>
                                     <select id="kelas_id" name="kelas_id" class="w-full rounded-full">
                                         <option value=""> -- Pilih Kelas -- </option>
                                         @foreach ($kelas as $k)
@@ -78,6 +83,11 @@
             </div>
         </div>
     @endsection
+    <script>
+        $(document).ready(function() {
+            $('#kelas_id').select2();
+        });
+    </script>
 </body>
 
 </html>

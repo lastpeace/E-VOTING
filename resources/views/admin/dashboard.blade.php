@@ -39,11 +39,11 @@
                         onsubmit="return confirm('Yakin akan mereset vote?')">
                         @csrf
                         <button
-                            class="bg-orange-600 text-white p-2.5 rounded-full shadow-md hover:bg-orange-700 text-sm font-semibold transition-all ease-in-out"
+                            class="bg-red-600 text-white p-2.5 rounded-full shadow-md hover:bg-red-700 text-sm font-semibold transition-all ease-in-out"
                             type="submit">Reset Vote</button>
                     </form>
                 </div>
-                <div class="grid md:grid-cols-3 gap-5 md:gap-0 mx-16 my-20">
+                <div class="grid md:grid-cols-3 gap-5 md:gap-0 mx-16 mt-5 mb-20">
                     @foreach ($kandidat as $item)
                         <div class="mx-auto rounded-lg shadow-lg bg-white w-3/4">
                             <p class="uppercase text-center text-2xl font-semibold pt-5">
@@ -95,7 +95,7 @@
                             onsubmit="return confirm('Yakin akan mereset vote?')">
                             @csrf
                             <button
-                                class="bg-orange-600 text-white p-2.5 rounded-full shadow-md hover:bg-orange-700 text-sm font-semibold transition-all ease-in-out"
+                                class="bg-red-600 text-white p-2.5 rounded-full shadow-md hover:bg-red-700 text-sm font-semibold transition-all ease-in-out"
                                 type="submit">Reset Vote</button>
                         </form>
                     </div>
