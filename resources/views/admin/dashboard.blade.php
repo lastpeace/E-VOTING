@@ -9,7 +9,7 @@
 </head>
 @section('content')
     <div class="pt-2">
-        <div class="mx-auto h-auto md:h-full  bg-white rounded-t-[50px]">
+        <div class="mx-auto h-auto bg-white rounded-t-[50px]">
             <div class="ml-4 p-6 text-slate-400 text-sm">
                 <a href="{{ url('dashboard') }}">Dashboard</a>
             </div>
@@ -35,12 +35,13 @@
             </div>
             <div class="grid md:grid-cols-3 gap-5 md:gap-0 mx-16 my-20">
                 @foreach ($kandidat as $item)
-                    <div class="mx-auto rounded-t-lg shadow-lg bg-white w-3/4">
+                    <div class="mx-auto rounded-lg shadow-lg bg-white w-3/4">
                         <p class="uppercase text-center text-2xl font-semibold pt-5">
                             {{ $item->nama_kandidat }}
                         </p>
                         @if ($item->foto)
-                            <img class="p-4 mx-auto w-[300px]" src="{{ url('foto') . '/' . $item->foto }}" alt="">
+                            <img class="p-4 mx-auto w-[300px] h-[400px] object-cover"
+                                src="{{ url('foto') . '/' . $item->foto }}" alt="">
                         @endif
                         @php
                             $vote = App\Models\Vote::where('calon_id', $item->id_calon)->count();

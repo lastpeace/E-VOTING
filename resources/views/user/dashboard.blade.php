@@ -29,6 +29,15 @@
                 <div class="ml-4 px-6 text-xl font-semibold tracking-wider">
                     Selamat Datang, {{ Auth::user()->name }}
                 </div>
+                @if (Session::has('success'))
+                    <div class="mx-20">
+                        <div class="container bg-green-200 px-2 py-1 mt-2 rounded-lg text-justify">
+                            <div class="m-5 text-green-600 font-semibold">
+                                {{ Session::get('success') }}
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <div class="mx-10 my-20">
                     <form action=" {{ url('/dashboard') }}" method="POST">
                         @csrf
@@ -47,7 +56,7 @@
                                             </div>
                                             <div class="">
                                                 @if ($item->foto)
-                                                    <img class="mx-auto w-[300px]"
+                                                    <img class="mx-auto w-[300px] h-[400px] object-cover"
                                                         src="{{ url('foto') . '/' . $item->foto }}" alt="">
                                                 @endif
                                             </div>
@@ -152,8 +161,8 @@
                                     </div>
                                     <div class="">
                                         @if ($item->foto)
-                                            <img class="mx-auto w-[300px]" src="{{ url('foto') . '/' . $item->foto }}"
-                                                alt="">
+                                            <img class="mx-auto w-[300px] h-[400px] object-cover"
+                                                src="{{ url('foto') . '/' . $item->foto }}" alt="">
                                         @endif
                                     </div>
                                 </div>

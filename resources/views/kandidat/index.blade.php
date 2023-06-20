@@ -32,6 +32,15 @@
             <div class="mx-auto pt-4 text-center text-4xl font-bold uppercase tracking-wider">
                 <h1>data kandidat</h1>
             </div>
+            @if (Session::has('success'))
+                <div class="mx-20">
+                    <div class="container bg-green-200 px-2 py-1 mt-2 rounded-lg text-justify">
+                        <div class="m-5 text-green-600 font-semibold">
+                            {{ Session::get('success') }}
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div class="container mx-auto">
                 <div class="p-8">
                     <a class="bg-blue-600 text-white p-2.5 rounded-full shadow-md hover:bg-blue-700 text-sm font-semibold transition-all ease-in-out"

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class VoterController extends Controller
 {
@@ -56,7 +57,7 @@ class VoterController extends Controller
             'kelas_id' => $request->kelas_id,
         ]);
 
-        return redirect()->to('voter')->with('Berhasil menambahkan voter');
+        return redirect()->to('voter')->with('success', 'Berhasil menambahkan voter');
 
     }
     /**
@@ -97,7 +98,18 @@ class VoterController extends Controller
 
         user::where('id', $id)->update($data);
 
-        return redirect()->to('voter')->with('Berhasil melakukan update user');
+        return redirect()->to('voter')->with('success', 'Berhasil melakukan update user');
+    }
+    public function updateVote()
+    {
+        DB::table('users')
+            ->update([
+                'isVote' => '0',
+            ]);
+        DB::table('votes')
+            ->delete();
+
+        return redirect()->to('voter')->with('success', 'Berhasil melakukan reset voting');
     }
 
     /**
@@ -107,6 +119,6 @@ class VoterController extends Controller
     {
         $data = user::where('id', $id)->first();
         user::where('id', $id)->delete();
-        return redirect()->to('voter')->with('Voter berhasil dihapus');
+        return redirect()->to('voter')->with('success', 'Voter berhasil dihapus');
     }
 }

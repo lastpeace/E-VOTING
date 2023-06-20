@@ -27,6 +27,6 @@ class VoteController extends Controller
         User::where('id', $request->id_user)->update(['isVote' => 1]);
         return redirect()
             ->to('dashboard')
-            ->with('Berhasil menambahkan kelas');
+            ->with('success', 'Terimakasih Telah Melakukan Voting');
     }
 }

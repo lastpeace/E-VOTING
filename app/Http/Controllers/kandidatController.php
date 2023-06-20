@@ -58,7 +58,7 @@ class kandidatController extends Controller
         Kandidat::create($data);
         return redirect()
             ->to('kandidat')
-            ->with('Berhasil menambahkan kandidat');
+            ->with('success', 'Berhasil menambahkan kandidat');
     }
 
     /**
@@ -125,7 +125,7 @@ class kandidatController extends Controller
 
         Kandidat::where('id_calon', $id)->update($data);
 
-        return redirect()->to('kandidat')->with('Berhasil melakukan update kandidat');
+        return redirect()->to('kandidat')->with('success', 'Berhasil melakukan update kandidat');
     }
 
     /**
@@ -136,6 +136,6 @@ class kandidatController extends Controller
         $data = kandidat::where('id_calon', $id)->first();
         File::delete(public_path('foto') . '/' . $data->foto);
         kandidat::where('id_calon', $id)->delete();
-        return redirect()->to('kandidat')->with('Kandidat berhasil dihapus');
+        return redirect()->to('kandidat')->with('success', 'Kandidat berhasil dihapus');
     }
 }

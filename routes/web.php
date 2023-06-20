@@ -49,6 +49,7 @@ Route::get('/dashboard', function () {
     ->name('dashboard');
 
 Route::resource('/voter', VoterController::class);
+Route::post('/updateVote', [VoterController::class, 'updateVote'])->name('updateVote');
 Route::resource('/kelas', kelasController::class);
 Route::resource('/kandidat', kandidatController::class);
 

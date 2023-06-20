@@ -44,7 +44,7 @@ class kelasController extends Controller
         ];
         Kelas::create($data);
 
-        return redirect()->to('kelas')->with('Berhasil menambahkan kelas');
+        return redirect()->to('kelas')->with('success', 'Berhasil menambahkan kelas');
     }
 
     /**
@@ -88,7 +88,7 @@ class kelasController extends Controller
         ];
         Kelas::where('id', $id)->update($data);
 
-        return redirect()->to('kelas')->with('Berhasil melakukan update kelas');
+        return redirect()->to('kelas')->with('success', 'Berhasil melakukan update kelas');
     }
 
     /**
@@ -97,6 +97,6 @@ class kelasController extends Controller
     public function destroy(string $id)
     {
         kelas::where('id', $id)->delete();
-        return redirect()->to('kelas')->with('Kelas berhasil dihapus');
+        return redirect()->to('kelas')->with('success', 'Kelas berhasil dihapus');
     }
 }
