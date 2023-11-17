@@ -87,6 +87,15 @@
                 </div>
                 <div class="container mx-auto">
                     <div class="p-8">
+                        @if ($errors->any())
+                            <div class="bg-red-200 text-red-600 text-sm mx-auto w-3/4 p-4 rounded-lg">
+                                <ul>
+                                    @foreach ($errors->all() as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action=" {{ url('kandidat') }} " method="POST" enctype="multipart/form-data">
                             @csrf
                             <div>

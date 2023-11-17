@@ -48,7 +48,7 @@
                             <tbody>
                                 <?php $i = $siswa->firstItem(); ?>
                                 @foreach ($siswa as $index => $item)
-                                    <tr class="bg-gray-100 border-b hover:bg-blue-100">
+                                    <tr class="bg-gray-100 border-b hover:bg-blue-100 h-16">
                                         <td>{{ $i }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
